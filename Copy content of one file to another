@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    char source[200];
+    char destination[200];
+    int i = 0;
+
+    printf("Enter text to copy: ");
+    scanf("%[^\n]", source);
+
+    while (source[i] != '\0') {
+        destination[i] = source[i];
+        i++;
+    }
+    destination[i] = '\0';
+
+    printf("\nCopied content:\n%s\n", destination);
+
+    return 0;
+}
