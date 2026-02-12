@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int buffer[10], n, i;
+    int in = 0, out = 0;
+
+    printf("Enter number of items to produce (max 10): ");
+    scanf("%d", &n);
+
+    if(n > 10) {
+        printf("Buffer overflow!\n");
+        return 0;
+    }
+
+    for(i = 0; i < n; i++) {
+        buffer[in] = i + 1;
+        printf("Produced: %d\n", buffer[in]);
+        in++;
+    }
+
+    for(i = 0; i < n; i++) {
+        printf("Consumed: %d\n", buffer[out]);
+        out++;
+    }
+
+    return 0;
+}
