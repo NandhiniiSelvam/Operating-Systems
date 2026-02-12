@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <sys/ipc.h>
 #include <sys/msg.h>
 #include <string.h>
 
@@ -12,10 +13,11 @@ int main() {
     struct msg m;
 
     m.type = 1;
-    strcpy(m.text, "Hello IPC");
+    printf("Enter message: ");
+    scanf("%s", m.text);
 
     msgsnd(msgid, &m, sizeof(m.text), 0);
-    printf("Message sent\n");
+    printf("Message sent: %s\n", m.text);
 
     return 0;
 }
