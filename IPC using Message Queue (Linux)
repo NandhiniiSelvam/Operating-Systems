@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <sys/msg.h>
+#include <string.h>
+
+struct msg {
+    long type;
+    char text[50];
+};
+
+int main() {
+    int msgid = msgget(1234, 0666 | IPC_CREAT);
+    struct msg m;
+
+    m.type = 1;
+    strcpy(m.text, "Hello IPC");
+
+    msgsnd(msgid, &m, sizeof(m.text), 0);
+    printf("Message sent\n");
+
+    return 0;
+}
